@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<h2>Bài 1 - Viết chương trình khởi tạo mảng số nguyên gồm 10 phần tử.
+    Chương trình thực hiện tính và hiển thị xem có bao nhiêu số nguyên lớn hơn hoặc bằng 10.</h2>
+<button onclick="greaterThan10()">Click để bắt đầu bài 1</button>
+<h2>Bài 2 - Viết chương trình khởi tạo mảng số nguyên gồm 10 phần tử khác nhau.
+    Chương trình hiển thị ra được phần tử có giá trị lớn nhất trong mảng và vị trí của phần tử đó.</h2>
+<button onclick="maxNumIndex()">Click để bắt đầu bài 2</button>
+<h2>Bài 3 - Viết chương trình khởi tạo mảng số nguyên. Hiển hiện giá trị lớn nhất trong mảng đó.
+    In ra giá trị trung bình của các phần tử trong mảng.</h2>
+<button onclick="avgTotalArray()">Click để bắt đầu bài 3</button>
+<h2>Bài 4 - Viết chương trình khởi tạo/nhập vào một mảng số nguyên và đảo ngược các phần tử trong mảng đó.</h2>
+<button onclick="arrReverse()">Click để bắt đầu bài 4</button>
+<h2>Bài 5 - Viết chương trình đếm số nguyên âm trong một chuỗi</h2>
+<button onclick="negNumCheck()">Click để bắt đầu bài 5</button>
+<h2>Bài 6 - Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử, nhập/tạo phần tử số nguyên V.
+    Chương trình tìm xem V có nằm trong mảng số nguyên không?
+    Nếu V thuộc mảng số nguyên thì in ra "V is in the array" còn lại in ra "V is not in the array".</h2>
+<button onclick="numInArrCheck()">Click để bắt đầu bài 6</button>
+<h2>Bài 7 - Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử, nhập/tạo phần tử số nguyên V.
+    Chương trình kiểm tra xem V có thuộc mảng đã cho không, nếu V thuộc mảng đã cho xoá V khỏi mảng
+    (Bản chất việc xoá ở đây tức là dịch phần tử ở bên phải V sang vị trí của V, và gán 0 cho phần tử cuối cùng của
+    mảng)</h2>
+<button onclick="removeArrItem()">Click để bắt đầu bài 7</button>
+<h2>Bài 8 - Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử.
+    Chương trình sắp xếp mảng theo thứ tự giảm dần và hiển thị ra mảng đã được sắp xếp.</h2>
+<button onclick="sortingArray()">Click để bắt đầu bài 8</button>
+<h2>Bài 9- Viết chương trình khởi tạo/nhập vào 2 mảng số nguyên gồm 10 phần tử, gọi là mảng a và b.
+    Mảng c là một mảng được khai báo gồm 20 phần tử số nguyên.
+    Chương trình sẽ lưu các phần tử được nối từ hai mảng b và a vào mảng c. Hiển thị mảng c.</h2>
+<button onclick="combineArray()">Click để bắt đầu bài 9</button>
+</body>
+</html>
+
+<script>
+    // Bài 1
+    function greaterThan10() {
+        let result = "";
+        let arr = [];
+        for (let i = 0; i < 10; i++) {
+            let input = +prompt(`Nhập số để đưa vào Array, còn ${10 - i} số: `);
+            arr.push(input);
+        }
+        console.log(arr)
+        for (let j = 0; j < arr.length; j++) {
+            if (arr[j] > 10) {
+                result += arr[j] + ' , ';
+            }
+        }
+        console.log(result);
+        alert(`Trong danh sách đã nhập, các số lớn hơn 10 là: ${result}`);
+    }
+
+    // Bài 2
+    function maxNumIndex() {
+        let arr = [2, 9, 12, 13, 41, 55, 99, 12, 7, 92];
+        let max = 0;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        alert(`Giá trị lớn nhất trong array là ${max} ở vị trí ${arr.indexOf(max)}`)
+    }
+
+    // Bài 3
+    function avgTotalArray() {
+        let arr = [];
+        let max = 0;
+        let total = 0;
+        for (let i = 0; i < 10; i++) {
+            let input = +prompt(`Nhập số để đưa vào Array, còn ${10 - i} số: `);
+            arr.push(input);
+            total += arr[i];
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        alert(`Số lớn nhất trong Array là ${max}, giá trị trung bình của toàn bộ Array là ${total / arr.length}`);
+    }
+
+    // Bài 4
+    function arrReverse() {
+        let arr = [];
+        let arrLength = +prompt("Nhập số lượng phần tử bên trong Array")
+        if (isNaN(arrLength) || arrLength < 1) {
+            alert("Nhập lại, tạo array với ít nhất 1 phần tử!");
+        }
+        for (let i = 0; i < arrLength; i++) {
+            let input = +prompt(`Nhập giá trị đưa vào Array, còn ${arrLength - i} lần nhập`)
+            arr.push(input);
+        }
+        alert(`Array đã tạo là [${arr}], Array được đảo ngược là [${arr.reverse()}]`);
+    }
+
+    // Bài 5
+    function negNumCheck() {
+        let result = "";
+        let arr = [];
+        for (let i = 0; i < 10; i++) {
+            let input = +prompt(`Nhập số để đưa vào Array, còn ${10 - i} số: `);
+            arr.push(input);
+        }
+        console.log(arr)
+        for (let j = 0; j < arr.length; j++) {
+            if (arr[j] < 0) {
+                result += arr[j] + ' , ';
+            }
+        }
+        console.log(result);
+        alert(`Trong danh sách đã nhập, các số âm là: ${result}`);
+    }
+
+    // Bài 6
+    function numInArrCheck() {
+        let arr = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 11, 12, 13, 14, 15];
+        let numGuess = +prompt("Nhập số cần tìm trong Array: ");
+
+        if (arr.indexOf(numGuess) === -1) {
+            alert(`Số đã nhập ${numGuess} không có trong Array ${arr}`)
+        } else {
+            alert(`Số đã nhập ${numGuess} có trong Array ${arr} ở vị trí ${arr.indexOf(numGuess)}`)
+        }
+    }
+
+    // Bài 7
+    function removeArrItem() {
+        let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        let numGuess = +prompt("Nhập số cần tìm trong Array: ");
+
+        if (arr.indexOf(numGuess) === -1) {
+            alert(`Số đã nhập ${numGuess} không có trong Array ${arr}, đã thêm số ${numGuess} vào vị trí cuối.`);
+            arr.push(numGuess);
+            alert(`Array mới có giá trị là: ${arr}`);
+        } else {
+            alert(`Số đã nhập ${numGuess} có trong Array ${arr} ở vị trí ${arr.indexOf(numGuess)}, gỡ bỏ số ${numGuess} khỏi Array...`)
+            arr.splice(arr.indexOf(numGuess), 1);
+            alert(`Array mới là ${arr}`);
+        }
+    }
+
+    // Bài 8
+    function sortingArray() {
+        let arr = []
+        let arrLength = +prompt("Nhập số lượng phần tử của Array");
+        for (let i = 0; i < arrLength; i++) {
+            let num = +prompt(`Nhập giá trị thứ ${i} của Array: `);
+            arr.push(num);
+        }
+        alert(`Array được tạo là: ${arr} , sắp xếp lại Array theo thứ tự giảm dần...`);
+        arr.sort(function (a, b) {
+            return b - a
+        });
+        alert(`Array được sắp xếp lại là: ${arr}`);
+    }
+
+    // Bài 9
+    function combineArray() {
+        let arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        // let arr2 = [1,2,3,4,5,6,7,8,9,10];
+        let arr2 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
+        let arr3 = arr1.concat(arr2);
+        alert(`Hai Array được tạo là [${arr1}] \n và Array 2 [${arr2}]`)
+        alert(`Array được ghép là [${arr3}]`)
+    }
+</script>
+
+
+<!--Bài 1- Viết chương trình khởi tạo mảng số nguyên gồm 10 phần tử. Chương trình thực hiện tính và hiển thị xem có bao nhiêu số nguyên lớn hơn hoặc bằng 10.-->
+
+<!--Bài 2- Viết chương trình khởi tạo mảng số nguyên gồm 10 phần tử khác nhau. -->
+<!--Chương trình hiển thị ra được phần tử có giá trị lớn nhất trong mảng và vị trí của phần tử đó.-->
+
+<!--Bài 3- Viết chương trình khởi tạo mảng số nguyên. Hiển hiện giá trị lớn nhất trong mảng đó. -->
+<!--In ra giá trị trung bình của các phần tử trong mảng.-->
+
+<!--Bài 4- Viết chương trình khởi tạo/nhập vào một mảng số nguyên và đảo ngược các phần tử trong mảng đó.-->
+
+<!--Bài 5- Viết chương trình đếm số nguyên âm trong một chuỗi-->
+
+<!--Bài 6- Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử, nhập/tạo phần tử số nguyên V. -->
+<!--Chương trình tìm xem V có nằm trong mảng số nguyên không? Nếu V thuộc mảng số nguyên thì in ra "V is in the array" còn lại in ra "V is not in the array".-->
+
+<!--Bài 7- Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử, nhập/tạo phần tử số nguyên V. -->
+<!--Chương trình kiểm tra xem V có thuộc mảng đã cho không, nếu V thuộc mảng đã cho xoá V khỏi mảng -->
+<!--(Bản chất việc xoá ở đây tức là dịch phần tử ở bên phải V sang vị trí của V, và gán 0 cho phần tử cuối cùng của mảng)-->
+
+<!--Bài 8- Viết chương trình khởi tạo/nhập vào một mảng số nguyên gồm 10 phần tử. -->
+<!--Chương trình sắp xếp mảng theo thứ tự giảm dần và hiển thị ra mảng đã được sắp xếp.-->
+
+<!--Bài 9- Viết chương trình khởi tạo/nhập vào 2 mảng số nguyên gồm 10 phần tử, gọi là mảng a và b. -->
+<!--Mảng c là một mảng được khai báo gồm 20 phần tử số nguyên. -->
+<!--Chương trình sẽ lưu các phần tử được nối từ hai mảng b và a vào mảng c. Hiển thị mảng c.-->
